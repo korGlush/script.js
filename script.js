@@ -1,37 +1,59 @@
-const title = prompt('Как называется ваш проект?');
-const screens = prompt('Какие типы экранов нужно разработать? \n пример: "Простые, Сложные, Интерактивные"');
-const screenPrice = +prompt('колько будет стоить данная работа? \n пример: 12000');
-const adaptive = prompt('Нужен ли адаптив на сайте?');
-const service1 = prompt('Какой дополнительный тип услуги нужен? \n Например: service1, service2');
-const servicePrice1 = +prompt('Сколько это будет стоить? \n Например: 5000');
-const service2 = prompt('Какой дополнительный тип услуги нужен? \n Например: service1, service2');
-const servicePrice2 = +prompt('Сколько это будет стоить? \n Например: 3500');
-const rollBack = .9;
+'use strict';
+
+let book = document.querySelectorAll('.book')
+console.dir(book);
+
+book[1].after(book[0])
+book[4].after(book[3])
+book[4].after(book[2])
+book[3].after(book[2])
+book[2].before(book[5])
 
 
-let fullPrice = screenPrice + servicePrice1 + servicePrice2
-console.log(fullPrice);
-let servicePercentPrice = Math.ceil(fullPrice * rollBack);
-console.log(servicePercentPrice);
+let background = document.querySelector('body')
+background.style.backgroundImage = 'url(./image/you-dont-know-js.jpg)' 
 
-console.log(title); 
-console.log(screens);
-console.log(screenPrice);
-console.log(adaptive);
 
-if (adaptive == "да") {
-    console.log(Boolean(1));
-} else if (adaptive == "нет") {
-    console.log(Boolean(""));
-}
+let book3 = document.querySelectorAll('.book > h2')
 
-if (fullPrice > 0 && fullPrice < 15000) {
-    console.log("Скидка не предусмотрена");
-} else if (fullPrice > 15000 && fullPrice < 30000) {
-    console.log("Даем скидку в 5%");
-} else if (fullPrice > 30000) {
-    console.log("Даем скидку в 10%");
-} else if (fullPrice < 0) {
-    console.log("Что то пошло не так");
-}
+book3[2].textContent = "Книга 3. this и Прототипы Объектов"
+book3[2].style.color = 'darkkhaki'
 
+
+let adv = document.querySelector('.adv')
+adv.style.display = 'none'
+
+
+let glav = document.querySelectorAll('.book > ul')
+console.dir(glav)
+
+let glav2 = glav[1].querySelectorAll('li')
+console.log(glav2);
+
+glav2[8].after(glav2[2])
+glav2[6].after(glav2[4])
+glav2[6].after(glav2[5])
+glav2[5].before(glav2[8])
+glav2[5].before(glav2[4])
+glav2[6].after(glav2[4])
+glav2[2].before(glav2[9])
+
+let glav5 = glav[4].querySelectorAll('li')
+console.log(glav5);
+
+glav5[2].before(glav5[9])
+glav5[2].before(glav5[3])
+glav5[2].before(glav5[4])
+glav5[5].before(glav5[6])
+glav5[5].before(glav5[7])
+
+
+// “Глава 8: За пределами ES6”
+let li = document.createElement('li')
+li.innerHTML = '<li>Глава 8: За пределами ES6</li>';
+glav[5].appendChild(li)
+let glav6 = glav[5].querySelectorAll('li')
+console.log(glav6);
+glav6[10].after(glav6[9])
+
+// https://codepen.io/kojikikirafox/pen/zYpzwyd
