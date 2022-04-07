@@ -1,21 +1,32 @@
-    'use strict'
+'use strict'
 
-const Person = function (name) {
-    this.name = name
+const DomElement = function(selector,height,width,bg,fontSize) {
+    this.selector = selector,
+    this.height = height,
+    this.width = width,
+    this.bg = bg,
+    this.fontSize = fontSize
 }
 
-Person.prototype.sayHello = function () {
-    console.log('Привет, меня зовут' + this.name);
+DomElement.prototype.createNewElement = function() {
+    let newElement;
+    if (this.selector[0] === '.') {
+        newElement = document.createElement('div')
+        newElement.className = this.selector.slice(1)
+    }
+    if (this.selector[0] === '#'){
+        newElement = document.createElement('p')
+        newElement.id = this.selector.slice(1)
+    }
+    newElement.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px`
+    return newElement;
 }
 
-const student = function (name, role) {
-    Person.call(this, name)
-    this.role = role
-}
+ 
+let elem1 = new DomElement('#text', 10, 25, 'black', 10)
+let elem2 = new DomElement('.block', 15, 30, 'green', 14)
+console.log(elem1)
+console.log(elem2)
 
-Student.prototype = Object.create(Person.prototype)
-Student.prototype.constructor = Student
-
-const newStudent = new Student('VIad', 'student')
-
-console.log(newStudent);
+document.body.append(elem1.createNewElement())
+document.body.append(elem2.createNewElement())
