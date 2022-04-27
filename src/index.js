@@ -5,13 +5,13 @@ import scroll from "./modules/scroll"
 import assay from "./modules/assay"
 import tabs from "./modules/tabs"
 import slider from "./modules/slider"
-import calc from './modules/calc'
+import calc from "./modules/calc"
 
-timer('21 april 2022 14:55:00:000')
+timer('22 april 2022 15:50:00:000')
 menu()
 modal()
 scroll()
 assay()
 tabs()
 slider(['.portfolio-content', '.portfolio-item', '.dot'])
-calc(100)
+calc()
